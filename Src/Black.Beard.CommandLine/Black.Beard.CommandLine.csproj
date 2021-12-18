@@ -3,11 +3,21 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/Black-Beard-Sdk/Black.Beard.CommandLine</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Description>manage application starting with command line</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="CommandLines\BuildSchema.cs" />
     <Compile Remove="Configurations\ConfigurationFile.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
