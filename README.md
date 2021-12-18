@@ -51,6 +51,11 @@ Create a new folder "Commands" at root of the project and add the following code
 public partial class Command : Command<CommandLine>
 {
 
+    /*
+        Syntax
+        .exe template execute "<template file>" --source:"value source" --debug
+    */
+
     public CommandLineApplication CommandExecute(CommandLine app)
     {
         
@@ -67,35 +72,34 @@ public partial class Command : Command<CommandLine>
         cmd.Command("execute", config =>
         {
 
-            config.Description = "run template transformation with the specified template";
+            config.Description = "description of the command";
             config.HelpOption(HelpFlag);
 
             var validator = new GroupArgument(config);
 
+            // Add argument
             var argTemplatePath = validator.Argument("<template file>", "template path"
                 , ValidatorExtension.EvaluateFileExist
                 , ValidatorExtension.EvaluateRequired
             );
 
+            // Add argument
             var argSource = validator.Option("--source", "json source path that contains data source"
                 , ValidatorExtension.EvaluateFileExist
             );
 
-            var argTarget = validator.Option("--out", "json target path that contains output data"
-            );
-
-            var optTemplatePath = validator.OptionNoValue("--m", "the result is merge on the source document");
-            var optNoIndent = validator.OptionNoValue("--noIndented", "format stream on one line");
+            // Add option
             var optwithDebug = validator.OptionNoValue("--debug", "activate debug mode");
 
             config.OnExecute(() =>
             {
 
                 if (!validator.Evaluate(out int errorNum))
+                {
+                    // add your code here.
+                }
 
-                // add your code here.
-                
-                return 0;
+                return errorNum;
 
             });
         });
