@@ -60,7 +60,7 @@ namespace Bb.CommandLines.Validators
         public static int EvaluateName(CommandArgument command)
         {
 
-            if (command.Value.Contains('.'))
+            if (command.Value.Contains("."))
                 return Error(ErrorEnum.InvalidName, "name {0} can't contains '.' character", command);
 
             return 0;

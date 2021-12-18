@@ -15,10 +15,10 @@ namespace Bb.CommandLines
 
             var o = self.Trim();
 
-            if (o.StartsWith('"') && o.EndsWith('"'))
+            if (o.StartsWith("\"") && o.EndsWith("\""))
                 o =self.Trim().Trim('"');
 
-            if (o.StartsWith('\'') && o.EndsWith('\''))
+            if (o.StartsWith("'") && o.EndsWith("'"))
                 o = self.Trim().Trim('\'');
 
             return o;
